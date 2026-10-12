@@ -9,7 +9,6 @@
   --color-border: #E5D5C0;
   --color-card-bg: #FFFFFF;
   --color-focus: #FF6A00;
-  --checkerboard-pattern: repeating-conic-gradient(#E8E3DA 0% 25%, #FFFFFF 0% 50%) 50% / 16px 16px;
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -253,33 +252,6 @@ button:focus-visible {
   background: #094F2B;
 }
 
-/* Toggle Control */
-.view-toggle-bar {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.btn-toggle {
-  background: var(--color-white);
-  border: 1px solid var(--color-green);
-  color: var(--color-green);
-  padding: 0.35rem 0.85rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.btn-toggle:hover {
-  background: rgba(13, 107, 58, 0.08);
-}
-
-.btn-toggle.active {
-  background: var(--color-green);
-  color: var(--color-white);
-}
-
 /* Asset Cards Grid */
 .asset-grid {
   display: grid;
@@ -292,13 +264,18 @@ button:focus-visible {
 }
 
 .asset-card {
-  background: var(--color-card-bg);
+  background: transparent;
   border: 1px solid var(--color-border);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: none;
+  transition: border-color 0.15s ease;
+}
+
+.asset-card:hover {
+  border-color: var(--color-green);
 }
 
 .asset-preview-container {
@@ -306,14 +283,9 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 1.25rem 1rem 0.5rem;
   position: relative;
-  background-color: var(--color-cream);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.asset-preview-container.checkerboard {
-  background: var(--checkerboard-pattern);
+  background: transparent;
 }
 
 .asset-preview-img {

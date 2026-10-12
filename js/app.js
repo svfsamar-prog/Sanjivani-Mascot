@@ -10,9 +10,6 @@ function createAssetCard(item, isBanner = false) {
 
   const previewContainer = document.createElement('div');
   previewContainer.className = 'asset-preview-container';
-  if (item.transparency) {
-    previewContainer.classList.add('checkerboard');
-  }
 
   const img = document.createElement('img');
   img.src = item.preview_path;
@@ -73,6 +70,8 @@ function createAssetCard(item, isBanner = false) {
   const downloadLink = document.createElement('a');
   downloadLink.href = item.path;
   downloadLink.download = item.filename;
+  downloadLink.target = '_blank';
+  downloadLink.rel = 'noopener noreferrer';
   downloadLink.className = 'btn-download';
   downloadLink.setAttribute('aria-label', 'Download ' + item.label + ' (' + item.format + ')');
   downloadLink.textContent = 'Download ' + item.format;
@@ -216,25 +215,6 @@ document.addEventListener('DOMContentLoaded', function () {
       if (vectorContainer && filesByCategory['07-vector']) {
         filesByCategory['07-vector'].forEach(function (item) {
           vectorContainer.appendChild(createAssetCard(item));
-        });
-      }
-
-      // Web & UI Background Toggle
-      const uiToggleBtn = document.getElementById('btn-toggle-ui-bg');
-      if (uiToggleBtn && uiContainer) {
-        let isCheckerboard = true;
-        uiToggleBtn.addEventListener('click', function () {
-          isCheckerboard = !isCheckerboard;
-          const previewBoxes = uiContainer.querySelectorAll('.asset-preview-container');
-          previewBoxes.forEach(function (box) {
-            if (isCheckerboard) {
-              box.classList.add('checkerboard');
-            } else {
-              box.classList.remove('checkerboard');
-            }
-          });
-          uiToggleBtn.textContent = isCheckerboard ? 'Background: Checkerboard' : 'Background: Cream';
-          uiToggleBtn.classList.toggle('active', isCheckerboard);
         });
       }
     })
