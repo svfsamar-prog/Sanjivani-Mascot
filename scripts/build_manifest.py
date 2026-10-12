@@ -143,7 +143,11 @@ def main():
     with open(manifest_path, "w", encoding="utf-8") as f:
         json.dump(manifest_data, f, indent=2)
 
-    print(f"Successfully generated data/manifest.json with {len(manifest_files)} assets.")
+    js_manifest_path = os.path.join(root, "data", "manifest.js")
+    with open(js_manifest_path, "w", encoding="utf-8") as f:
+        f.write("window.MANIFEST_DATA = " + json.dumps(manifest_data, indent=2) + ";\n")
+
+    print(f"Successfully generated data/manifest.json and data/manifest.js with {len(manifest_files)} assets.")
 
 if __name__ == "__main__":
     main()
