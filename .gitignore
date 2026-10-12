@@ -1,0 +1,7 @@
+# Raw unextracted source
+Elements/
+*.zip
+
+# Verification screenshots
+screenshot_*.png
+test_*.html
