@@ -132,19 +132,28 @@ button:focus-visible {
   max-width: 100%;
 }
 
-.hero-emblem {
-  max-width: 140px;
-  width: 100%;
-  height: auto;
+.hero-brand-lockup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 1.5vw, 18px);
+  max-width: 100%;
   margin: 0 auto 1.25rem;
+}
+
+.hero-emblem {
+  height: clamp(52px, 9vw, 100px);
+  width: auto;
+  object-fit: contain;
   display: block;
+  flex-shrink: 0;
 }
 
 .hero-wordmark {
-  max-width: 280px;
-  width: 100%;
-  height: auto;
-  margin: 0 auto 1rem;
+  height: clamp(52px, 9vw, 100px);
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
   display: block;
 }
 
@@ -441,9 +450,19 @@ button:focus-visible {
 
 /* Responsive adjustments */
 @media (max-width: 640px) {
+  .hero-brand-lockup {
+    gap: 8px;
+    margin-bottom: 0.75rem;
+  }
+  .hero-emblem {
+    height: clamp(44px, 11vw, 68px);
+  }
+  .hero-wordmark {
+    height: clamp(44px, 11vw, 68px);
+  }
   .hero-tagline {
-    font-size: 0.85rem;
-    letter-spacing: 0.05em;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
   }
   .section-title {
     font-size: 1.35rem;
